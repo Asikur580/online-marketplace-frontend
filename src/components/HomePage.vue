@@ -14,13 +14,11 @@ import Down from './footer.vue';
     <Category />
     <Featured />
     <Down />
-    
+
 </template>
 
 <style scoped>
-
 body {
-    font-family: "Arial", sans-serif;    
+    font-family: "Arial", sans-serif;
 }
-
 </style>

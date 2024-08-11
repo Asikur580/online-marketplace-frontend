@@ -1,14 +1,14 @@
 <script setup>
-import HomePage from './components/HomePage.vue';
+import { RouterView } from "vue-router";
+import Navbar from './components/navbar.vue';
+import Down from './components/footer.vue';
 
 </script>
 
-<template> 
-
-<HomePage />
-  
+<template>
+    <Navbar />
+    <RouterView />
+    <down />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
