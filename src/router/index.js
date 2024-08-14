@@ -1,9 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
+import ProfileView from '@/views/ProfileView.vue';
+import ProfileUpdatedView from '@/views/ProfileUpdatedView.vue';
+import ProductDetailView from '@/views/ProductDetailView.vue';
 import RegisterView from '@/views/auth/RegisterView.vue';
 import LoginView from '@/views/auth/LoginView.vue';
 import CategoryView from '@/views/CategorysView.vue';
 import { useAuthStore } from "@/stores/auth";
+import SendOtpView from '@/views/auth/SendOtpView.vue';
+import VerifyOtpView from '@/views/auth/VerifyOtpView.vue';
+import ResetPasswordView from '@/views/auth/ResetPasswordView.vue';
 
 
 const router = createRouter({
@@ -13,7 +19,7 @@ const router = createRouter({
             path: '/',
             name: 'home',
             component: HomeView,
-        },
+        },        
         {
             path: '/register',
             name: 'register',
@@ -27,10 +33,45 @@ const router = createRouter({
             meta: { guest: true },
         },
         {
+            path: '/sendOtp',
+            name: 'sendOtp',
+            component: SendOtpView,
+            meta: { guest: true },
+        },
+        {
+            path: '/verifyOtp',
+            name: 'verifyOtp',
+            component: VerifyOtpView,
+            meta: { otp: true },
+        },
+        {
+            path: '/resetPassword',
+            name: 'resetPassword',
+            component: ResetPasswordView,
+            meta: { reset: true },
+        },
+        {
+            path: '/profile',
+            name: 'profile',
+            component: ProfileView,
+            meta: { auth: true },
+        },
+        {
+            path: '/profileUpdate',
+            name: 'profileUpdate',
+            component: ProfileUpdatedView,
+            meta: { auth: true },
+        },
+        {
             path: '/category',
             name: 'category',
             component: CategoryView,
             meta: { auth: true },
+        },
+        {
+            path: '/productDetails/:id',
+            name: 'productDetails',
+            component: ProductDetailView,            
         },
 
     ]
@@ -47,6 +88,7 @@ router.beforeEach(async (to, from) => {
     if (!authStore.user && to.meta.auth) {
         return { name: "login" };
     }
+      
 
 });
 

@@ -37,25 +37,24 @@ onMounted(() => { authStore.getUser(); });
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-light" type="submit">Search</button>
                 </form>
-                <ul v-if="authStore.user" class="navbar-nav ms-auto">
-                    <li class="nav-item">
+                <ul class="navbar-nav ms-auto">
+                    <li  v-if="authStore.user" class="nav-item">
                         <a class="nav-link" href="#"><font-awesome-icon :icon="['fas', 'shopping-cart']" /></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+                    <li  v-if="authStore.user" class="nav-item">
+                        <RouterLink :to="{ name: 'profile' }" class="nav-link" href="#"><i class="fas fa-user"></i>
+                        </RouterLink>
                     </li>
-                    <li class="nav-item">
+                    <li  v-if="authStore.user" class="nav-item">
                         <form @submit.prevent="authStore.logout">
                             <button class="btn btn-danger ms-2">Logout</button>
                         </form>
                     </li>
-                </ul>
-                <ul v-else class='navbar-nav ms-auto'>
-                    <li class="nav-item">
+                    <li  v-if="!authStore.user" class="nav-item">
                         <RouterLink :to="{ name: 'login' }" class="btn btn-outline-light ms-2" href="#">Login
                         </RouterLink>
                     </li>
-                    <li class="nav-item">
+                    <li v-if="!authStore.user" class="nav-item">
                         <RouterLink :to="{ name: 'register' }" class="btn btn-light ms-2" href="#">Register
                         </RouterLink>
                     </li>

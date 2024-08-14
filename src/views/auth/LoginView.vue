@@ -31,6 +31,10 @@ onMounted(() => (errors.value = {}));
           <p v-if="errors.password" class="text-danger">{{ errors.password[0] }}</p>
         </div>
 
+        <div class="mb-3 text-end">
+          <RouterLink :to="{ name: 'sendOtp' }" href="" class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 25, 135, 84;">Forgot Password?</RouterLink>
+        </div>
+
         <button class="btn btn-primary w-100">Login</button>
       </form>
     </div>
